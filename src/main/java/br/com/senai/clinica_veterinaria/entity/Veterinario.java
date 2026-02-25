@@ -6,10 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class veterinario_consultaEntity {
+public class Veterinario {
       @Id
-      @GeneratedValue( strategy = GenerationType.IDENTITY)
-
+      @GeneratedValue( strategy = GenerationType.AUTO)
+      private Long id;
       private String obs_medicas;
 
     public String getObs_medicas() {

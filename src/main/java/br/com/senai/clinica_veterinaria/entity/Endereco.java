@@ -6,92 +6,74 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class enderecoEntitty {
+public class Endereco {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
-
-    private int cpf;
-    private int logradouro;
+    @GeneratedValue( strategy = GenerationType.AUTO)
+    private Long id;
+    private Integer cpf;
+    private Integer logradouro;
     private String localidade;
-    private int uf;
+    private Integer uf;
     private String bairro;
-    private int numero;
+    private Integer numero;
     private String complemento;
     private String referencia;
-    private boolean principal;
-
-    public int getCpf() {
+    private Boolean principal;
+    public Integer getCpf() {
         return cpf;
     }
-
-    public void setCpf(int cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
-
-    public int getLogradouro() {
+    public Integer getLogradouro() {
         return logradouro;
     }
-
-    public void setLogradouro(int logradouro) {
+    public void setLogradouro(Integer logradouro) {
         this.logradouro = logradouro;
     }
-
     public String getLocalidade() {
         return localidade;
     }
-
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
-
-    public int getUf() {
+    public Integer getUf() {
         return uf;
     }
-
-    public void setUf(int uf) {
+    public void setUf(Integer uf) {
         this.uf = uf;
     }
-
     public String getBairro() {
         return bairro;
     }
-
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
-
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
-
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
-
     public String getComplemento() {
         return complemento;
     }
-
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
-
     public String getReferencia() {
         return referencia;
     }
-
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
-
-    public boolean isPrincipal() {
+    public Boolean getPrincipal() {
         return principal;
     }
-
-    public void setPrincipal(boolean principal) {
+    public void setPrincipal(Boolean principal) {
         this.principal = principal;
     }
 
-
+   
 
 }

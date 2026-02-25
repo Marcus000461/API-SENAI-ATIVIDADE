@@ -6,17 +6,19 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class telefoneEntitty {
+public class Telefone {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.AUTO)
+    private Long id;
+    private Integer numero;
 
-    private int numero;
-
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
+
+    
 }

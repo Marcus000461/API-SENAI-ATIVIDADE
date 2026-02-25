@@ -6,36 +6,32 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class donoEntity {
+public class Dono {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue( strategy = GenerationType.AUTO)
+    private Long id;
     private String nome;
-    private int cpf;
-    private boolean status;
-
+    private Integer cpf;
+    private Boolean status;
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public int getCpf() {
+    public Integer getCpf() {
         return cpf;
     }
-
-    public void setCpf(int cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
-
-    public boolean isStatus() {
+    public Boolean getStatus() {
         return status;
     }
-
-    public void setStatus(boolean status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
+    
 
 }
