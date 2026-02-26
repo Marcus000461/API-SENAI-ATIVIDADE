@@ -2,7 +2,6 @@ package br.com.senai.clinica_veterinaria.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,7 +51,7 @@ public class AnimalController {
         
         Animal animal = repository.findById(id).get();
         if(entity.getNome() != null){
-            
+            animal.setNome(entity.getNome());
         }
 
         
