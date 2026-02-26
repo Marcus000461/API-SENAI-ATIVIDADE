@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,14 +53,42 @@ public class AnimalController {
         
         Animal animal = repository.findById(id).get();
         if(entity.getNome() != null){
-            
+            animal.setNome(entity.getNome());
+        }
+        
+         if(entity.getEspecie() !=null){
+            animal.setEspecie(entity.getEspecie());
         }
 
-        
+         if(entity.getRaca() !=null){
+            animal.setRaca(entity.getRaca());
+        }
+
+        if(entity.getIdade() !=null){
+            animal.setIdade(entity.getIdade());
+        }
+
+           if(entity.getInfor_medicas() !=null){
+            animal.setInfor_medicas(entity.getInfor_medicas());
+        }
+
+         if(entity.getStatus() !=null){
+            animal.setStatus(entity.getStatus());
+        }
+
+
 
         repository.save(animal);
         return null;
     }
 
+     @DeleteMapping("/{id}")
+    public Response deleteAnimal(@PathVariable Long id) {
+        if (!repository.existsById(id)) {
+            return new Response(404, "Animal não encontrado");
+        }
+        return null;
+
     
+    }
 }

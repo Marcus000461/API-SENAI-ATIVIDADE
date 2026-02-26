@@ -1,5 +1,5 @@
 package br.com.senai.clinica_veterinaria.controller;
 
-public class Veterinario {
+public class TelefoneController {
     
 }
