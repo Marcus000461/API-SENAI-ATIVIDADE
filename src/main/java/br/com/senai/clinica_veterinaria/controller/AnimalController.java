@@ -2,7 +2,6 @@ package br.com.senai.clinica_veterinaria.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,79 +15,74 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Animal;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.AnimalRepository;
-
-
-
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Clinica")
+@RequestMapping("/animal")
 public class AnimalController {
-    
+
     @Autowired
     private AnimalRepository repository;
-    
+
     @PostMapping //
-    public Animal adicionaAnimal(@RequestBody Animal cao ){
-        Animal saved  = repository.save(cao);
+    public Animal adicionaAnimal(@Valid @RequestBody Animal cao) {
+        Animal saved = repository.save(cao);
         return saved;
 
     }
 
     @GetMapping
-    public List<Animal> retornaTodos(){
+    public List<Animal> retornaTodos() {
         return repository.findAll();
     }
 
     @PutMapping("/{id}")
-    public Response AtualizaAnimal(@PathVariable Long id, @RequestBody Animal entity){
-    //private String nome;
-    // private String especie;
-    // private String raca;
-    // private Integer idade;
-    // private String infor_medicas;
-    // private Boolean status;
-        if (!repository.existsById(id)){
-            return new  Response(404, "Não encontrado");
+    public Response AtualizaAnimal(@PathVariable Long id, @RequestBody Animal entity) {
+        // private String nome;
+        // private String especie;
+        // private String raca;
+        // private Integer idade;
+        // private String infor_medicas;
+        // private Boolean status;
+        if (!repository.existsById(id)) {
+            return new Response(404, "Não encontrado");
         }
-        
+
         Animal animal = repository.findById(id).get();
-        if(entity.getNome() != null){
+        if (entity.getNome() != null) {
             animal.setNome(entity.getNome());
         }
-        
-         if(entity.getEspecie() !=null){
+
+        if (entity.getEspecie() != null) {
             animal.setEspecie(entity.getEspecie());
         }
 
-         if(entity.getRaca() !=null){
+        if (entity.getRaca() != null) {
             animal.setRaca(entity.getRaca());
         }
 
-        if(entity.getIdade() !=null){
+        if (entity.getIdade() != null) {
             animal.setIdade(entity.getIdade());
         }
 
-           if(entity.getInfor_medicas() !=null){
+        if (entity.getInfor_medicas() != null) {
             animal.setInfor_medicas(entity.getInfor_medicas());
         }
 
-         if(entity.getStatus() !=null){
+        if (entity.getStatus() != null) {
             animal.setStatus(entity.getStatus());
         }
-
-
 
         repository.save(animal);
         return null;
     }
 
-     @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public Response deleteAnimal(@PathVariable Long id) {
         if (!repository.existsById(id)) {
             return new Response(404, "Animal não encontrado");
         }
-        return null;
+        return new Response(204, "Animal deletado");
 
-    
     }
 }

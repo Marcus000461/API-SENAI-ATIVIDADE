@@ -15,16 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.senai.clinica_veterinaria.entity.Consulta;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.ConsultaRepository;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/Clinica")
+@RequestMapping("/Consulta")
 public class ConsultaController {
     
     @Autowired
     private ConsultaRepository repository;
 
     @PostMapping
-    public Consulta criaConsulta(@RequestBody Consulta entity){
+    public Consulta criaConsulta(@Valid @RequestBody Consulta entity){
         Consulta saved = repository.save(entity);
         return saved;
 

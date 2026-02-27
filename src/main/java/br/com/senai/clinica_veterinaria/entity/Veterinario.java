@@ -10,15 +10,33 @@ public class Veterinario {
       @Id
       @GeneratedValue( strategy = GenerationType.AUTO)
       private Long id;
-      private String obs_medicas;
-
-    public String getObs_medicas() {
-        return obs_medicas;
+      private String crmv;
+      private String especialização;
+      private Integer jornada;
+      public Long getId() {
+          return id;
+      }
+      public void setId(Long id) {
+          this.id = id;
+      }
+      public String getCrmv() {
+          return crmv;
+      }
+      public  void setCrmv(String crmv) {
+          this.crmv = crmv;
+      }
+      public String getEspecialização() {
+          return especialização;
+      }
+      public void setEspecialização(String especialização) {
+          this.especialização = especialização;
+      }
+      public Integer getJornada() {
+          return jornada;
+      }
+      public  void setJornada(Integer jornada) {
+          this.jornada = jornada;
+      }
+    
+ 
     }
-
-    public void setObs_medicas(String obs_medicas) {
-        this.obs_medicas = obs_medicas;
-    }
-
-
-}
