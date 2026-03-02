@@ -2,6 +2,7 @@ package br.com.senai.clinica_veterinaria.controller;
 
 import java.util.List;
 
+import org.slf4j.helpers.Reporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,8 @@ public class EnderecoController {
     public Response adicionaEndereco(@Valid @RequestBody Endereco endereco ){
         repository.save(endereco);
           return new  Response(201, "Não encontrado");
+
+        
 
     }
 

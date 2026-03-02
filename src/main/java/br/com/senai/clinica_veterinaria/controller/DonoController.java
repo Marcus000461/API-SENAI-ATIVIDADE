@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.senai.clinica_veterinaria.entity.Dono;
 import br.com.senai.clinica_veterinaria.exception.Response;
 import br.com.senai.clinica_veterinaria.repository.DonoRepository;
@@ -24,9 +23,16 @@ public class DonoController {
    private DonoRepository repository;
     
      @PostMapping //
-    public Dono adicionaDono(@RequestBody Dono dono ){
+    public Response adicionaDono(@RequestBody Dono dono ){
+
+        boolean cpfJaExiste = repository.existexistsByCpf(dono.getCpf());
+
+            if (cpfJaExiste) {
+                return new Response(409, "Já existe esse Cpf");
+            }
+
         Dono saved  = repository.save(dono);
-        return saved;
+          return new Response(201, "Dono adicionadocom sucesso");
 
     }
 

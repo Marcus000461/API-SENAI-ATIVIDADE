@@ -12,6 +12,12 @@ public class Endereco {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id;
+
+    
+
+
+
+
     @Size(min=3, max= 11)
     private Integer cep;
     @Size(min=8, max= 8, message = "O cep tem que ter obrigatoriamente 8 caracteres")
@@ -34,7 +40,7 @@ public class Endereco {
     private Boolean principal;
     @NotBlank
 
-    public Integer getCpf() {
+    public @Size(min = 3, max = 11) Integer getCpf() {
         return cep;
     }
     public void setCpf(Integer cpf) {
