@@ -24,7 +24,7 @@ public class AnimalController {
     @Autowired
     private AnimalRepository repository;
 
-    @PostMapping //
+    @PostMapping 
     public Animal adicionaAnimal(@Valid @RequestBody Animal cao) {
         Animal saved = repository.save(cao);
         return saved;
@@ -44,8 +44,9 @@ public class AnimalController {
         // private Integer idade;
         // private String infor_medicas;
         // private Boolean status;
-        if (!repository.existsById(id)) {
-            return new Response(404, "Não encontrado");
+        if (!repository.existsById(id)) { 
+            return new Response(404, "Não encontrado");//O servidor não pode encontrar o recurso solicitado. No navegador, isso significa que o URL não é reconhecido. Em uma API, isso também pode significar que o endpoint é válido, mas o próprio recurso não existe. //
+
         }
 
         Animal animal = repository.findById(id).get();
@@ -80,9 +81,9 @@ public class AnimalController {
     @DeleteMapping("/{id}")
     public Response deleteAnimal(@PathVariable Long id) {
         if (!repository.existsById(id)) {
-            return new Response(404, "Animal não encontrado");
+            return new Response(409, "Animal não encontrado");//Esta resposta será enviada quando uma requisição conflitar com o estado atual do servidor.//
         }
-        return new Response(204, "Animal deletado");
+        return new Response(204, "Animal deletado");//Não há conteúdo para enviar para esta solicitação, mas os cabeçalhos podem ser úteis. O agente do usuário pode atualizar seus cabeçalhos em cache para este recurso com os novos.//
 
     }
 }
