@@ -25,10 +25,11 @@ public class AnimalController {
     private AnimalRepository repository;
 
     @PostMapping 
-    public Response adicionaAnimal(@Valid @RequestBody Animal cao) {
-        return new Response(404, "Não encontrado");//O servidor não pode encontrar o recurso solicitado. No navegador, isso significa que o URL não é reconhecido. Em uma API, isso também pode significar que o endpoint é válido, mas o próprio recurso não existe. // 
+    public Response adicionaAnimal(@Valid @RequestBody Animal animal) {
+        repository.save(animal);
+        return new Response(201, "Não encontrado");
+        //O servidor não pode encontrar o recurso solicitado. No navegador, isso significa que o URL não é reconhecido. Em uma API, isso também pode significar que o endpoint é válido, mas o próprio recurso não existe. // 
 
-        
 
     }
 

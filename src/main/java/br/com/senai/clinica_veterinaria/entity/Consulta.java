@@ -18,19 +18,14 @@ public class Consulta {
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id;
 
-
+    private LocalDateTime data_hora;
 
     @OneToMany(mappedBy = "consulta")
-    private List<VeterinarioConsulta> veterinarioConsultas;
-
-    
-    private LocalDateTime data_hora;
+    private List<VeterinarioConsulta> veterinarioConsultas;    
 
     @ManyToOne
     @JoinColumn( name = "fk_animal")
     private Animal animal;
-
-
 
     public Long getId() {
         return id;

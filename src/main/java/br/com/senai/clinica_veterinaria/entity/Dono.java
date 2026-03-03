@@ -18,7 +18,6 @@ public class Dono {
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotBlank
     private String nome;
     @Size(min=3, max= 11, message = "O cpf tem que ter obrigatoriamente 11 caracteres")

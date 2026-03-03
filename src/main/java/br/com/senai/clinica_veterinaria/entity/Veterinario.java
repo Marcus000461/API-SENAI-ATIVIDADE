@@ -19,8 +19,6 @@ public class Veterinario {
       private String especialização;
       private Integer jornada;
 
-
-
       @OneToMany(mappedBy = "veterinario")
       private List<VeterinarioConsulta> veterinarioConsulta;
 

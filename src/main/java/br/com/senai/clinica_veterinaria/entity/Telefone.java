@@ -20,14 +20,31 @@ public class Telefone {
     @JoinColumn(name = "fk_dono")
     private Dono dono;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(Object numero) {
-        this.numero = (Integer) numero;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
-    
+    public Dono getDono() {
+        return dono;
+    }
+
+    public void setDono(Dono dono) {
+        this.dono = dono;
+    }
+
+   
+   
 }
 

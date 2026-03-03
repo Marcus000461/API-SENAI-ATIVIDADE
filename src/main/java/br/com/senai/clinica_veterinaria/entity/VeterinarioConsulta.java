@@ -17,6 +17,8 @@ public class VeterinarioConsulta {
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
+    private String obsMedicas;
 
     @ManyToOne
     @JoinColumn( name = "id_veterinario")
@@ -27,6 +29,46 @@ public class VeterinarioConsulta {
     private Consulta consulta;
 
 
-    @NotBlank
-    private String obsMedicas;
+
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public Veterinario getVeterinario() {
+        return veterinario;
+    }
+
+
+    public void setVeterinario(Veterinario veterinario) {
+        this.veterinario = veterinario;
+    }
+
+
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
+    }
+
+
+    public String getObsMedicas() {
+        return obsMedicas;
+    }
+
+
+    public void setObsMedicas(String obsMedicas) {
+        this.obsMedicas = obsMedicas;
+    }
+
+    
 }

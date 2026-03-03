@@ -26,7 +26,7 @@ public class VeterinarioController {
     private VeterinarioRepository repository;
 
     @PostMapping //
-    public Response adicionatelefone(@RequestBody Veterinario veterinario) {
+    public Response adicionatelefone( @Valid @RequestBody Veterinario veterinario) {
 
         boolean crmvJaExiste = repository.existsByCrmv(veterinario.getCrmv());
         
@@ -44,7 +44,7 @@ public class VeterinarioController {
     }
 
     @PutMapping("/{id}")
-    public Response Atualizatelefone( @Valid @PathVariable Long id, @RequestBody Veterinario entity){
+    public Response Atualizatelefone( @PathVariable Long id, @RequestBody Veterinario entity){
        
         
         if (!repository.existsById(id)){

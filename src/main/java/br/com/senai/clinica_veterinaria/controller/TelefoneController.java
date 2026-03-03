@@ -25,7 +25,7 @@ public class TelefoneController {
     private TelefoneRepository repository;
 
     @PostMapping //
-    public Response adicionatelefone(@RequestBody Telefone telefone) {
+    public Response adicionatelefone(@Valid @RequestBody Telefone telefone) {
         repository.save(telefone);
         return new Response(201, "Não encontrado");
 
@@ -37,7 +37,7 @@ public class TelefoneController {
     }
 
     @PutMapping("/{id}")
-    public Response Atualizatelefone(@Valid @PathVariable Long id, @RequestBody Telefone entity){
+    public Response Atualizatelefone(@PathVariable Long id, @RequestBody Telefone entity){
        
         
         if (!repository.existsById(id)){

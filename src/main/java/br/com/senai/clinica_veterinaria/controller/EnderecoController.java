@@ -40,16 +40,7 @@ public class EnderecoController {
 
     @PutMapping("/{id}")
     public Response Atualizaendereco(@PathVariable Long id, @RequestBody Endereco entity){
-        //private Long id;
-        //private Integer cpf;
-        //private Integer logradouro;
-        //private String localidade;
-        //private Integer uf;
-        //private String bairro;
-        //private Integer numero;
-        //private String complemento;
-        //private String referencia;
-        //private Boolean principal;
+      
         
         if (!repository.existsById(id)){
             return new  Response(404, "Não encontrado");

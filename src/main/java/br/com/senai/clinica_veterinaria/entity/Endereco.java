@@ -15,11 +15,6 @@ public class Endereco {
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id;
 
-    
-
-
-
-
     @Size(min=3, max= 11)
     private Integer cep;
     @Size(min=8, max= 8, message = "O cep tem que ter obrigatoriamente 8 caracteres")
@@ -105,7 +100,5 @@ public class Endereco {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setPrincipal'");
     }
-
-   
 
 }

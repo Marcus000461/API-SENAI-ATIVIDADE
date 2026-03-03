@@ -24,7 +24,7 @@ public class DonoController {
     private DonoRepository repository;
 
     @PostMapping //
-    public Response adicionaDono(@RequestBody Dono dono) {
+    public Response adicionaDono(@Valid @RequestBody Dono dono) {
 
         boolean cpfJaExiste = repository.existsByCpf(dono.getCpf());
 
@@ -33,7 +33,7 @@ public class DonoController {
         }
 
         repository.save(dono);
-        return new Response(201, "Dono adicionadocom sucesso");
+        return new Response(201, "Dono adicionado com sucesso");
 
     }
 
@@ -43,7 +43,7 @@ public class DonoController {
     }
 
     @PutMapping("/{id}")
-    public Response AtualizaDono(@Valid @PathVariable Long id, @RequestBody Dono entity) {
+    public Response AtualizaDono( @PathVariable Long id, @RequestBody Dono entity) {
 
         if (!repository.existsById(id)) {
             return new Response(404, "Não encontrado");
