@@ -1,10 +1,13 @@
 package br.com.senai.clinica_veterinaria.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Veterinario {
@@ -15,6 +18,11 @@ public class Veterinario {
       private String crmv;
       private String especialização;
       private Integer jornada;
+
+
+
+      @OneToMany(mappedBy = "veterinario")
+      private List<VeterinarioConsulta> veterinarioConsulta;
 
       public Long getId() {
           return id;

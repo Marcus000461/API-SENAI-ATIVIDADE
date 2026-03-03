@@ -28,7 +28,7 @@ public class VeterinarioController {
     @PostMapping //
     public Response adicionatelefone(@RequestBody Veterinario veterinario) {
 
-        boolean crmvJaExiste = repository.existexistsByCrmv(veterinario.getCrmv());
+        boolean crmvJaExiste = repository.existsByCrmv(veterinario.getCrmv());
         
         if (crmvJaExiste) {
             return new Response(409, "Já existe esse Crmv");

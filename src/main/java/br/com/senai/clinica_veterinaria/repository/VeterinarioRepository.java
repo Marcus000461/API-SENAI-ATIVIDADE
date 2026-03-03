@@ -8,5 +8,5 @@ import br.com.senai.clinica_veterinaria.entity.Veterinario;
 public interface VeterinarioRepository extends JpaRepository<Veterinario, Long> {
     
 
-    boolean existexistsByCrmv(String crmv);
+    boolean existsByCrmv(String crmv);
 }

@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -17,8 +18,6 @@ public class Dono {
     @GeneratedValue( strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "dono")
-    private List<Telefone> telefones;
 
     @NotBlank
     private String nome;
@@ -27,6 +26,18 @@ public class Dono {
     private String cpf;
     @NotBlank
     private Boolean status;
+     @NotNull(message = "É necessário informar o status! ('true' para endereço principal, 'false' para endereço secundário).")
+    
+     @OneToMany(mappedBy = "dono")
+      private List<Animal> animais;
+
+    @OneToMany(mappedBy = "dono")
+    private List<Endereco> enderecos;
+
+    @OneToMany( mappedBy =  "dono")
+    private List<Telefone> telefones;
+
+
     public String getNome() {
         return nome;
     }

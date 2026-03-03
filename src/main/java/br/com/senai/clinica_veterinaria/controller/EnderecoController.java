@@ -2,7 +2,6 @@ package br.com.senai.clinica_veterinaria.controller;
 
 import java.util.List;
 
-import org.slf4j.helpers.Reporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -106,7 +105,7 @@ public class EnderecoController {
         if (!repository.existsById(id)) {
             return new Response(404, "endereco não encontrado");
         }
-        return null;
+         return new Response(204, "endereco não encontrado");
 
     
     }

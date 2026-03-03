@@ -3,6 +3,7 @@ package br.com.senai.clinica_veterinaria.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,60 +19,59 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/dono")
 public class DonoController {
-    
-   @Autowired
-   private DonoRepository repository;
-    
-     @PostMapping //
-    public Response adicionaDono(@RequestBody Dono dono ){
 
-        boolean cpfJaExiste = repository.existexistsByCpf(dono.getCpf());
+    @Autowired
+    private DonoRepository repository;
 
-            if (cpfJaExiste) {
-                return new Response(409, "Já existe esse Cpf");
-            }
+    @PostMapping //
+    public Response adicionaDono(@RequestBody Dono dono) {
 
-        Dono saved  = repository.save(dono);
-          return new Response(201, "Dono adicionadocom sucesso");
+        boolean cpfJaExiste = repository.existsByCpf(dono.getCpf());
+
+        if (cpfJaExiste) {
+            return new Response(409, "Já existe esse Cpf");
+        }
+
+        repository.save(dono);
+        return new Response(201, "Dono adicionadocom sucesso");
 
     }
 
-      @GetMapping
-    public List<Dono> retornaTodos(){
+    @GetMapping
+    public List<Dono> retornaTodos() {
         return repository.findAll();
     }
 
-     @PutMapping("/{id}")
-      public Response AtualizaDono( @Valid @PathVariable Long id, @RequestBody Dono entity){
-        //private Long id;
-        //private String nome;
-        //private Integer cpf;
-        //private Boolean status; 
-       
-        
-        if (!repository.existsById(id)){
-            return new  Response(404, "Não encontrado");
+    @PutMapping("/{id}")
+    public Response AtualizaDono(@Valid @PathVariable Long id, @RequestBody Dono entity) {
+
+        if (!repository.existsById(id)) {
+            return new Response(404, "Não encontrado");
         }
-        
+
         Dono dono = repository.findById(id).get();
-        if(entity.getNome() != null){
+        if (entity.getNome() != null) {
             dono.setNome(entity.getNome());
         }
-        
-         if(entity.getCpf() !=null){
+
+        if (entity.getCpf() != null) {
             dono.setCpf(entity.getCpf());
         }
 
-         if(entity.getStatus() !=null){
+        if (entity.getStatus() != null) {
             dono.setStatus(entity.getStatus());
         }
 
         repository.save(dono);
-        return null;
+          return new Response(404, "Não encontrado");
     }
 
-
-
-
-
+    @DeleteMapping("/[id")
+    public Response deletaDono( @PathVariable Long id){
+        if (!repository.existsById(id)){
+            return new Response(404,  "Dono não encontrdao");
+        }
+        repository.deleteById(id);
+        return new Response(404, "Dono deletado com sucesso");
+    }
 }

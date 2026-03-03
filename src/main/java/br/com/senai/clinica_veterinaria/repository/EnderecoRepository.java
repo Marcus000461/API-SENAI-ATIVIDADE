@@ -6,5 +6,4 @@ import br.com.senai.clinica_veterinaria.entity.Endereco;
 
 public interface EnderecoRepository extends JpaRepository<Endereco, Long>{
 
-    boolean existBy(String cpf);
 }

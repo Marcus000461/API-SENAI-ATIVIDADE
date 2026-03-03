@@ -8,5 +8,5 @@ import br.com.senai.clinica_veterinaria.entity.Dono;
 public interface DonoRepository extends JpaRepository<Dono, Long> {
      
     
-    boolean existexistsByCpf(String cpf);
+    boolean existsByCpf(String cpf);
 }

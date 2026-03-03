@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 
@@ -23,6 +25,13 @@ public class Consulta {
 
     
     private LocalDateTime data_hora;
+
+    @ManyToOne
+    @JoinColumn( name = "fk_animal")
+    private Animal animal;
+
+
+
     public Long getId() {
         return id;
     }
@@ -35,7 +44,14 @@ public class Consulta {
     public void setData_hora(LocalDateTime data_hora) {
         this.data_hora = data_hora;
     }
+    public Animal getAnimal() {
+        return animal;
+    }
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+    }
   
+    
     
 
     

@@ -25,9 +25,8 @@ public class ConsultaController {
     private ConsultaRepository repository;
 
     @PostMapping
-    public Consulta criaConsulta(@Valid @RequestBody Consulta entity){
-        Consulta saved = repository.save(entity);
-        return saved;
+    public Response criaConsulta(@Valid @RequestBody Consulta entity){
+        return new Response(404, "Consulta não encontrada");
 
     }
 
